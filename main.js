@@ -140,7 +140,7 @@ async function main() {
             core.endGroup()
         }
 
-        if (revision) {
+        /* if (revision) {
             core.startGroup("Create tarball")
             await exec.exec("docker", [
                 "exec",
@@ -149,7 +149,7 @@ async function main() {
                 "HEAD"
             ])
             core.endGroup()
-        }
+        }*/
 
         core.startGroup("Build packages")
         await exec.exec("docker", [
