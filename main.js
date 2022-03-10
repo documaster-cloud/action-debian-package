@@ -40,7 +40,7 @@ async function main() {
 
         const file = path.join(sourceDirectory, "debian/changelog")
         const changelog = await firstline(file)
-        const regex = /^(?<pkg>.+) \(((?<epoch>[0-9]+):)?(?<version>[^:-]+)(-(?<revision>[^:-]+))?\) (?<packageDistribution>.+);/
+        const regex = /^(?<pkg>.+) \(((?<epoch>[0-9]+):)?(?<version>[^:-]+)(-(?<revision>[^:-\\w]?))?(?<name>.*)-(?<sha>.*)\) (?<packageDistribution>.+);/
         const match = changelog.match(regex)
         const { pkg, epoch, version, revision, packageDistribution } = match.groups
         const distribution = osDistribution ? osDistribution : packageDistribution
